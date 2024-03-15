@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+    <link rel="icon" href="https://fav.farm/🔥" />
+  </head>
+  <body>
+    <div class="clock">
+      <div class="clock-face">
+        <div class="hand hour-hand"></div>
+        <div class="hand min-hand"></div>
+        <div class="hand second-hand"></div>
+
+        <div class="digit hour12">12</div>
+        <div class="digit hour13">13</div>
+        <div class="digit hour14">14</div>
+        <div class="digit hour15">15</div>
+        <div class="digit hour16">16</div>
+        <div class="digit hour17">17</div>
+        <div class="digit hour18">18</div>
+        <div class="digit hour19">19</div>
+        <div class="digit hour20">20</div>
+        <div class="digit hour21">21</div>
+        <div class="digit hour22">22</div>
+        <div class="digit hour23">23</div>
+      </div>
+      <div class="legend">Apostolos Kapetanios</div>
+    </div>
+
+    <style>
+      html {
+        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=4);
+        background-size: cover;
+        font-family: "helvetica neue";
+        text-align: center;
+        font-size: 10px;
+      }
+
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+
+        padding: 2.5rem;
+
+        /* box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+        inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2); */
+      }
+
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        /* border: 1px solid red; */
+        border-radius: 50%;
+        /* transform: translate(-13%, -15%); */
+      }
+
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        /* transition: all 1s; */
+      }
+
+      .hand.second-hand {
+        width: 45%;
+        left: 5%;
+        height: 3px;
+      }
+
+      .hand.min-hand {
+        width: 40%;
+        left: 10%;
+      }
+
+      .hand.min-hand::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, -7%);
+        width: 0;
+        height: 0;
+        border-top: 3.5px solid transparent;
+        border-bottom: 3.5px solid transparent;
+        border-right: 3.5px solid red;
+      }
+
+      .hand.hour-hand {
+        position: relative;
+        width: 25%;
+        left: 25%;
+        height: 7px;
+      }
+
+      .legend {
+        transform: translateY(+100px);
+        text-wrap: nowrap;
+        color: white;
+      }
+
+      .hand.hour-hand::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        transform: translate(-100%, 0);
+        width: 0;
+        height: 0;
+        border-top: 3.5px solid transparent;
+        border-bottom: 3.5px solid transparent;
+        border-right: 3.5px solid red;
+      }
+
+      .digit {
+        text-align: center;
+        display: inline;
+        /* border: 1px solid red; */
+      }
+
+      .hour12 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(90deg)));
+        left: calc(50% + (100% / 2 * cos(90deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour13 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(60deg)));
+        left: calc(50% + (100% / 2 * cos(60deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour14 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(30deg)));
+        left: calc(50% + (100% / 2 * cos(30deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour15 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(0deg)));
+        left: calc(50% + (100% / 2 * cos(0deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour16 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-30deg)));
+        left: calc(50% + (100% / 2 * cos(-30deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour17 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-60deg)));
+        left: calc(50% + (100% / 2 * cos(-60deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour18 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-90deg)));
+        left: calc(50% + (100% / 2 * cos(-90deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour19 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-120deg)));
+        left: calc(50% + (100% / 2 * cos(-120deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour20 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-150deg)));
+        left: calc(50% + (100% / 2 * cos(-150deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour21 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-180deg)));
+        left: calc(50% + (100% / 2 * cos(-180deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour22 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-210deg)));
+        left: calc(50% + (100% / 2 * cos(-210deg)));
+        transform: translate(-50%, -50%);
+      }
+
+      .hour23 {
+        position: absolute;
+        top: calc(50% - (100% / 2 * sin(-240deg)));
+        left: calc(50% + (100% / 2 * cos(-240deg)));
+        transform: translate(-50%, -50%);
+      }
+    </style>
+
+    <script>
+      const secHand = document.querySelector(".second-hand");
+      const minHand = document.querySelector(".min-hand");
+      const hourHand = document.querySelector(".hour-hand");
+
+      function setDate() {
+        const now = new Date();
+        const seconds = now.getSeconds();
+        const minutes = now.getMinutes();
+        let hours = now.getHours();
+
+        let secondsDegrees = seconds * (360 / 60) + 90; // due to 90deg offset on above transform
+        const minuteDegrees = minutes * (360 / 60) + 90; // due to 90deg offset on above transform
+        const hourDegrees = hours * (360 / 12) + 90; // due to 90deg offset on above transform
+
+        if (seconds === 0) {
+          secHand.style.transition = "none";
+        } else {
+          secHand.style.transition = "all .5s";
+        }
+
+        secHand.style.transform = `rotate(${secondsDegrees}deg)`;
+        minHand.style.transform = `rotate(${minuteDegrees}deg)`;
+        hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+        console.log(seconds);
+      }
+
+      setInterval(setDate, 1000);
+    </script>
+  </body>
+</html>
